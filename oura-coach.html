@@ -11,7 +11,830 @@
     --black: #0a0a0a;
     --carbon: #111214;
     --steel: #1c1e22;
+    --gunmetal: #2a2d33;<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIELD READY — Daily Training Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --black: #0a0a0a;
+    --carbon: #111214;
+    --steel: #1c1e22;
     --gunmetal: #2a2d33;
+    --ash: #3d4148;
+    --mid: #6b7280;
+    --light: #9ca3af;
+    --white: #f0f0ee;
+    --cream: #e8e6e0;
+    --red: #e8321a;
+    --red-dim: #7a1a0e;
+    --amber: #f59e0b;
+    --green: #22c55e;
+    --green-dim: #166534;
+    --yellow: #eab308;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--gunmetal);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: var(--black);
+    z-index: 100;
+  }
+
+  .wordmark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .wordmark span {
+    color: var(--red);
+  }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* MAIN LAYOUT */
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  /* STEP CARDS */
+  .step-card {
+    background: var(--carbon);
+    border: 1px solid var(--gunmetal);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .step-card.active {
+    border-color: var(--ash);
+  }
+
+  .step-card.locked {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--red);
+    line-height: 1;
+    min-width: 28px;
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .step-sub {
+    font-size: 13px;
+    color: var(--mid);
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* INPUTS */
+  label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+
+  label:first-of-type { margin-top: 0; }
+
+  input[type="text"], input[type="url"], select, textarea {
+    width: 100%;
+    background: var(--steel);
+    border: 1px solid var(--gunmetal);
+    border-radius: 3px;
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  input[type="text"]:focus,
+  input[type="url"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--red);
+  }
+
+  select option { background: var(--steel); }
+
+  textarea {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  /* BUTTONS */
+  .btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .btn-primary:hover { background: #d12e18; }
+  .btn-primary:disabled { background: var(--red-dim); cursor: not-allowed; opacity: 0.6; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--light);
+    border: 1px solid var(--gunmetal);
+  }
+
+  .btn-ghost:hover { border-color: var(--ash); color: var(--white); }
+
+  .btn-full { width: 100%; justify-content: center; }
+
+  /* OAUTH FLOW */
+  .oauth-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .oauth-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: var(--steel);
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--light);
+  }
+
+  .oauth-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gunmetal);
+    color: var(--mid);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .oauth-step a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  .oauth-step a:hover { text-decoration: underline; }
+
+  /* METRICS GRID */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .metric-box {
+    background: var(--steel);
+    border: 1px solid var(--gunmetal);
+    border-radius: 3px;
+    padding: 12px;
+  }
+
+  .metric-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .metric-val.good { color: var(--green); }
+  .metric-val.warn { color: var(--amber); }
+  .metric-val.low  { color: var(--red); }
+  .metric-val.neutral { color: var(--white); }
+
+  .metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* WORKOUT OUTPUT */
+  #output-section {
+    display: none;
+    margin-top: 24px;
+  }
+
+  .output-card {
+    background: var(--carbon);
+    border: 1px solid var(--gunmetal);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .output-header {
+    background: var(--steel);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--gunmetal);
+  }
+
+  .readiness-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .pill-high { background: var(--green-dim); color: var(--green); }
+  .pill-mid  { background: #78350f; color: var(--amber); }
+  .pill-low  { background: var(--red-dim); color: #fca5a5; }
+
+  .output-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+
+  .output-body {
+    padding: 20px;
+    font-size: 14px;
+    color: var(--cream);
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
+
+  /* LOADING */
+  .loading-bar {
+    height: 2px;
+    background: var(--gunmetal);
+    border-radius: 1px;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+
+  .loading-bar-fill {
+    height: 100%;
+    background: var(--red);
+    width: 0%;
+    transition: width 0.3s;
+    animation: loadpulse 1.5s infinite;
+  }
+
+  @keyframes loadpulse {
+    0%   { width: 15%; margin-left: 0; }
+    50%  { width: 40%; margin-left: 30%; }
+    100% { width: 15%; margin-left: 85%; }
+  }
+
+  .loading-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mid);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  /* STATUS MESSAGES */
+  .status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  .status.error { background: var(--red-dim); color: #fca5a5; display: block; }
+  .status.success { background: var(--green-dim); color: var(--green); display: block; }
+  .status.info { background: var(--gunmetal); color: var(--light); display: block; }
+
+  /* TOKEN DISPLAY */
+  .token-display {
+    background: var(--steel);
+    border: 1px solid var(--gunmetal);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    word-break: break-all;
+    display: none;
+    margin-top: 10px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--gunmetal);
+    margin: 24px 0;
+  }
+
+  /* COPY BUTTON ROW */
+  .copy-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .copy-row input {
+    flex: 1;
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  /* INLINE LINK */
+  a.inline { color: var(--red); text-decoration: none; }
+  a.inline:hover { text-decoration: underline; }
+
+  .small { font-size: 12px; color: var(--mid); margin-top: 6px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .metric-val { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Field<span>Ready</span></div>
+  <div class="badge">Hyrox · Deka · Daily Intel</div>
+</header>
+
+<main>
+
+  <!-- STEP 1: REGISTER OURA APP -->
+  <div class="step-card active" id="card-1">
+    <div class="step-header">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Register your Oura app</div>
+        <div class="step-sub">One-time setup — takes about 2 minutes</div>
+      </div>
+    </div>
+
+    <div class="oauth-steps">
+      <div class="oauth-step">
+        <div class="oauth-dot">1</div>
+        <div>Go to <a href="https://cloud.ouraring.com/oauth/applications" target="_blank">cloud.ouraring.com/oauth/applications</a> and sign in</div>
+      </div>
+      <div class="oauth-step">
+        <div class="oauth-dot">2</div>
+        <div>Click <strong>Create New Application</strong></div>
+      </div>
+      <div class="oauth-step">
+        <div class="oauth-dot">3</div>
+        <div>Name it anything (e.g. "Field Ready"). For <strong>Redirect URI</strong>, paste this exact URL:</div>
+      </div>
+    </div>
+
+    <div class="copy-row" style="margin-top: 10px;">
+      <input type="text" id="redirect-uri-display" value="" readonly />
+      <button class="btn btn-ghost" onclick="copyRedirectUri()">Copy</button>
+    </div>
+
+    <div class="oauth-steps" style="margin-top: 10px;">
+      <div class="oauth-step">
+        <div class="oauth-dot">4</div>
+        <div>Enable <strong>client-side authentication</strong> (implicit grant). Save the app.</div>
+      </div>
+      <div class="oauth-step">
+        <div class="oauth-dot">5</div>
+        <div>Copy your <strong>Client ID</strong> and paste it below</div>
+      </div>
+    </div>
+
+    <label for="client-id" style="margin-top: 16px;">Oura Client ID</label>
+    <input type="text" id="client-id" placeholder="e.g. E55QJ2DGMZUXK6TN" />
+
+    <div style="margin-top: 14px;">
+      <button class="btn btn-primary" onclick="startOAuth()">Connect Oura Ring →</button>
+    </div>
+    <div class="status" id="status-1"></div>
+  </div>
+
+  <!-- STEP 2: AUTHORIZE (shown after OAuth redirect) -->
+  <div class="step-card locked" id="card-2">
+    <div class="step-header">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Authorize access</div>
+        <div class="step-sub">You'll be sent to Oura to approve data access</div>
+      </div>
+    </div>
+    <div class="token-display" id="token-display"></div>
+    <div class="status" id="status-2"></div>
+  </div>
+
+  <!-- STEP 3: TRAINING CONTEXT -->
+  <div class="step-card locked" id="card-3">
+    <div class="step-header">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Your training context</div>
+        <div class="step-sub">Helps calibrate recommendations to your season</div>
+      </div>
+    </div>
+
+    <label for="training-day">Today's scheduled session type</label>
+    <select id="training-day">
+      <option value="run-easy">Run — Easy / Aerobic</option>
+      <option value="run-tempo">Run — Tempo / Threshold</option>
+      <option value="run-intervals">Run — Intervals / Speed</option>
+      <option value="hybrid-strength">Hybrid — Strength Focus</option>
+      <option value="hybrid-cardio">Hybrid — Cardio / Functional</option>
+      <option value="hybrid-race-sim">Hybrid — Race Simulation</option>
+      <option value="rest">Rest / Recovery Day</option>
+    </select>
+
+    <label for="next-race">Next competition</label>
+    <input type="text" id="next-race" placeholder="e.g. Hyrox Chicago in 3 weeks" />
+
+    <label for="extra-notes">Anything else today? (optional)</label>
+    <textarea id="extra-notes" placeholder="e.g. legs are sore from yesterday, slept badly, feeling strong..."></textarea>
+
+    <div style="margin-top: 14px;">
+      <button class="btn btn-primary btn-full" onclick="getWorkout()" id="btn-get">
+        Get today's workout →
+      </button>
+    </div>
+    <div class="status" id="status-3"></div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div id="output-section">
+    <div class="section-label">Today's directive</div>
+
+    <div id="metrics-display" class="metrics-grid"></div>
+
+    <div class="output-card">
+      <div class="output-header">
+        <div class="readiness-pill" id="readiness-pill">—</div>
+        <div class="output-title" id="output-title">Analyzing...</div>
+      </div>
+      <div class="output-body" id="output-body">
+        <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+        <div class="loading-text">Pulling Oura data + generating recommendation...</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 14px; display: flex; gap: 10px;">
+      <button class="btn btn-ghost" onclick="resetApp()">← Start over</button>
+      <button class="btn btn-ghost" onclick="getWorkout()">↺ Refresh</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  // ─── STATE ───────────────────────────────────────────────────────────────
+  let accessToken = null;
+  const REDIRECT_URI = window.location.href.split('?')[0].split('#')[0];
+
+  // Set redirect URI display
+  document.getElementById('redirect-uri-display').value = REDIRECT_URI;
+
+  // ─── ON LOAD: check for OAuth callback token in URL hash ─────────────────
+  window.addEventListener('load', () => {
+    const hash = window.location.hash;
+    if (hash.includes('access_token=')) {
+      const params = new URLSearchParams(hash.substring(1));
+      accessToken = params.get('access_token');
+      if (accessToken) {
+        // Clean URL
+        history.replaceState(null, '', window.location.pathname);
+        // Restore client ID if saved
+        const savedId = localStorage.getItem('oura_client_id');
+        if (savedId) document.getElementById('client-id').value = savedId;
+        unlockStep(2);
+        unlockStep(3);
+        showStatus('status-2', 'success', '✓ Oura connected — access token received');
+        document.getElementById('token-display').style.display = 'block';
+        document.getElementById('token-display').textContent = '✓ Token: ' + accessToken.substring(0, 12) + '••••••••••••';
+        document.getElementById('card-2').classList.remove('locked');
+        document.getElementById('card-2').classList.add('active');
+        // Auto-scroll to step 3
+        setTimeout(() => document.getElementById('card-3').scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
+      }
+    }
+  });
+
+  // ─── STEP 1: OAUTH ───────────────────────────────────────────────────────
+  function startOAuth() {
+    const clientId = document.getElementById('client-id').value.trim();
+    if (!clientId) {
+      showStatus('status-1', 'error', 'Paste your Oura Client ID first');
+      return;
+    }
+    localStorage.setItem('oura_client_id', clientId);
+    const scopes = 'personal daily heartrate readiness sleep';
+    const authUrl = `https://cloud.ouraring.com/oauth/authorize?response_type=token&client_id=${clientId}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scopes)}`;
+    showStatus('status-1', 'info', 'Opening Oura authorization… approve access then return here.');
+    window.location.href = authUrl;
+  }
+
+  // ─── STEP 3: FETCH DATA + CALL CLAUDE ────────────────────────────────────
+  async function getWorkout() {
+    if (!accessToken) {
+      showStatus('status-3', 'error', 'No Oura token found. Complete step 1 first.');
+      return;
+    }
+
+    document.getElementById('output-section').style.display = 'block';
+    document.getElementById('output-body').innerHTML = `
+      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+      <div class="loading-text">Pulling readiness, sleep + HRV from Oura...</div>
+    `;
+    document.getElementById('output-title').textContent = 'Analyzing...';
+    document.getElementById('readiness-pill').textContent = '—';
+    document.getElementById('readiness-pill').className = 'readiness-pill';
+    document.getElementById('metrics-display').innerHTML = '';
+    document.getElementById('output-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try {
+      // Fetch today's date range
+      const today = new Date();
+      const todayStr = today.toISOString().split('T')[0];
+      const yesterday = new Date(today);
+      yesterday.setDate(today.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+      const headers = { 'Authorization': `Bearer ${accessToken}` };
+
+      // Fetch in parallel
+      const [readinessRes, sleepRes, hrvRes, activityRes] = await Promise.all([
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/heartrate?start_datetime=${yesterdayStr}T22:00:00&end_datetime=${todayStr}T08:00:00`, { headers }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers })
+      ]);
+
+      if (!readinessRes.ok) {
+        const err = await readinessRes.json();
+        throw new Error(`Oura API error: ${err.message || readinessRes.status}`);
+      }
+
+      const [readinessData, sleepData, hrvData, activityData] = await Promise.all([
+        readinessRes.json(), sleepRes.json(), hrvRes.json(), activityRes.json()
+      ]);
+
+      // Extract metrics
+      const readiness = readinessData.data?.[0];
+      const sleep = sleepData.data?.[0];
+      const activity = activityData.data?.[0];
+
+      const readinessScore = readiness?.score ?? null;
+      const sleepScore = sleep?.score ?? null;
+      const hrvBalance = readiness?.contributors?.hrv_balance ?? null;
+      const restingHR = readiness?.contributors?.resting_heart_rate ?? null;
+      const recoveryIndex = readiness?.contributors?.recovery_index ?? null;
+      const bodyTemp = readiness?.temperature_deviation ?? null;
+      const activityBalance = readiness?.contributors?.activity_balance ?? null;
+      const totalSleepMin = sleep?.contributors?.total_sleep ?? null;
+      const deepSleepMin = sleep?.contributors?.deep_sleep ?? null;
+
+      // Render metrics
+      renderMetrics({ readinessScore, sleepScore, hrvBalance, restingHR, bodyTemp, recoveryIndex });
+
+      // Build context for Claude
+      const trainingDay = document.getElementById('training-day').value;
+      const nextRace = document.getElementById('next-race').value;
+      const extraNotes = document.getElementById('extra-notes').value;
+
+      const trainingDayLabels = {
+        'run-easy': 'Easy / Aerobic Run',
+        'run-tempo': 'Tempo / Threshold Run',
+        'run-intervals': 'Interval / Speed Run',
+        'hybrid-strength': 'Hybrid — Strength Focus',
+        'hybrid-cardio': 'Hybrid — Cardio / Functional',
+        'hybrid-race-sim': 'Hybrid — Race Simulation',
+        'rest': 'Rest / Recovery Day'
+      };
+
+      document.getElementById('output-body').innerHTML = `
+        <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+        <div class="loading-text">Generating personalized recommendation...</div>
+      `;
+
+      const prompt = `You are a high-performance coach for a competitive Hyrox and Deka athlete. Based on today's biometric data from their Oura Ring, give them a specific, actionable workout recommendation.
+
+ATHLETE PROFILE:
+- Competes in Hyrox and Deka events throughout the year
+- Training split: 3 run days + 3 hybrid days + 1 rest day per week
+- Garage gym equipment: Concept2 rower, treadmill, Rogue plyo box (24"), power rack, GORUCK sandbag, med ball, adjustable dumbbells, balance board
+- Next competition: ${nextRace || 'not specified'}
+- Today's planned session type: ${trainingDayLabels[trainingDay]}
+- Athlete notes: ${extraNotes || 'none'}
+
+TODAY'S OURA BIOMETRICS:
+- Readiness Score: ${readinessScore !== null ? readinessScore + '/100' : 'unavailable'}
+- Sleep Score: ${sleepScore !== null ? sleepScore + '/100' : 'unavailable'}
+- HRV Balance contributor: ${hrvBalance !== null ? hrvBalance + '/100' : 'unavailable'}
+- Resting HR contributor: ${restingHR !== null ? restingHR + '/100' : 'unavailable'}
+- Recovery Index: ${recoveryIndex !== null ? recoveryIndex + '/100' : 'unavailable'}
+- Body Temperature Deviation: ${bodyTemp !== null ? bodyTemp + '°C' : 'unavailable'}
+- Activity Balance (yesterday): ${activityBalance !== null ? activityBalance + '/100' : 'unavailable'}
+
+INSTRUCTIONS:
+1. Start with a one-line verdict: GO HARD / MODERATE / TAKE IT EASY / REST — and why
+2. Give the specific workout to do today using their available equipment, with sets/reps/distances/times
+3. Give 1-2 things to watch during the session (heart rate zone, pacing, form cue etc.)
+4. End with one recovery action for after the session
+
+Keep it punchy and direct. No fluff. This person is a serious athlete who wants clear directives, not motivational speech. Use bullet points and clear structure. Under 300 words.`;
+
+      // Call Claude API
+      const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 1000,
+          messages: [{ role: 'user', content: prompt }]
+        })
+      });
+
+      const claudeData = await claudeRes.json();
+      const recommendation = claudeData.content?.[0]?.text || 'Could not generate recommendation.';
+
+      // Determine readiness level for UI
+      let level = 'mid', pillClass = 'pill-mid', pillText = 'MODERATE';
+      if (readinessScore !== null) {
+        if (readinessScore >= 75) { level = 'high'; pillClass = 'pill-high'; pillText = 'GO HARD'; }
+        else if (readinessScore < 55) { level = 'low'; pillClass = 'pill-low'; pillText = 'TAKE IT EASY'; }
+      }
+
+      // Extract first line as title
+      const lines = recommendation.trim().split('\n');
+      const firstLine = lines[0].replace(/[#*]/g, '').trim();
+      const rest = lines.slice(1).join('\n').trim();
+
+      document.getElementById('readiness-pill').textContent = pillText;
+      document.getElementById('readiness-pill').className = `readiness-pill ${pillClass}`;
+      document.getElementById('output-title').textContent = trainingDayLabels[trainingDay].toUpperCase();
+      document.getElementById('output-body').textContent = recommendation;
+
+    } catch (err) {
+      document.getElementById('output-body').innerHTML = '';
+      document.getElementById('output-body').textContent = '⚠ ' + err.message;
+      console.error(err);
+    }
+  }
+
+  // ─── RENDER METRICS ───────────────────────────────────────────────────────
+  function renderMetrics({ readinessScore, sleepScore, hrvBalance, restingHR, bodyTemp, recoveryIndex }) {
+    const metrics = [
+      { label: 'Readiness', val: readinessScore, unit: '', thresholds: [75, 55] },
+      { label: 'Sleep', val: sleepScore, unit: '', thresholds: [75, 55] },
+      { label: 'HRV Balance', val: hrvBalance, unit: '', thresholds: [75, 55] },
+      { label: 'Resting HR', val: restingHR, unit: '', thresholds: [75, 55] },
+    ];
+
+    const grid = document.getElementById('metrics-display');
+    grid.innerHTML = metrics.map(m => {
+      const display = m.val !== null ? Math.round(m.val) + m.unit : '—';
+      let cls = 'neutral';
+      if (m.val !== null) {
+        if (m.val >= m.thresholds[0]) cls = 'good';
+        else if (m.val < m.thresholds[1]) cls = 'low';
+        else cls = 'warn';
+      }
+      return `<div class="metric-box">
+        <div class="metric-val ${cls}">${display}</div>
+        <div class="metric-label">${m.label}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // ─── HELPERS ─────────────────────────────────────────────────────────────
+  function unlockStep(n) {
+    const card = document.getElementById(`card-${n}`);
+    card.classList.remove('locked');
+    card.classList.add('active');
+  }
+
+  function showStatus(id, type, msg) {
+    const el = document.getElementById(id);
+    el.className = `status ${type}`;
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function copyRedirectUri() {
+    const val = document.getElementById('redirect-uri-display').value;
+    navigator.clipboard.writeText(val).then(() => {
+      showStatus('status-1', 'success', '✓ Redirect URI copied to clipboard');
+    });
+  }
+
+  function resetApp() {
+    accessToken = null;
+    document.getElementById('output-section').style.display = 'none';
+    document.getElementById('card-2').classList.add('locked');
+    document.getElementById('card-3').classList.add('locked');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
+
     --ash: #3d4148;
     --mid: #6b7280;
     --light: #9ca3af;
