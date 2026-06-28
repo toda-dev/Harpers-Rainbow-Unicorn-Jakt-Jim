@@ -565,9 +565,9 @@
 
       // Fetch Oura data
       const [readinessRes, sleepRes, activityRes] = await Promise.all([
-        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
-        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
-        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers: ouraHeaders })
+        fetch(`https://api.allorigins.win/raw?url=https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
+        fetch(`https://api.allorigins.win/raw?url=https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
+        fetch(`https://api.allorigins.win/raw?url=https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers: ouraHeaders })
       ]);
 
       if (!readinessRes.ok) { const e = await readinessRes.json(); throw new Error(`Oura: ${e.message || readinessRes.status}`); }
