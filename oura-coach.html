@@ -407,6 +407,12 @@
       </button>
     </div>
     <div class="status" id="status-3"></div>
+
+    <div style="margin-top:10px;">
+      <button class="btn btn-ghost btn-full" onclick="debugOura()" style="font-size:11px;">🔍 Debug Oura Connection</button>
+    </div>
+    <div id="debug-output" style="margin-top:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--light); background:var(--card2); padding:12px; border-radius:8px; display:none; word-break:break-all;"></div>
+
     </div>
   </div>
 
@@ -520,6 +526,38 @@
   // ── FETCH STRAVA via Groq (server-side proxy approach) ───────────────────
   // We use the Groq key we already have + ask Claude/Groq to call Strava
   // Actually we'll fetch Strava directly with a saved token
+
+  async function debugOura() {
+    const token = localStorage.getItem('oura_access_token');
+    const out = document.getElementById('debug-output');
+    out.style.display = 'block';
+    out.textContent = 'Testing...\n';
+
+    if (!token) { out.textContent += 'NO TOKEN in localStorage!'; return; }
+    out.textContent += 'Token found: ' + token.substring(0,10) + '...\n';
+
+    const today = new Date().toISOString().split('T')[0];
+    const proxies = [
+      'https://corsproxy.io/?',
+      'https://api.allorigins.win/raw?url=',
+      'https://corsproxy.io/?url='
+    ];
+
+    for (const proxy of proxies) {
+      try {
+        out.textContent += '\nTrying: ' + proxy + '...\n';
+        const url = proxy + 'https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=' + today + '&end_date=' + today;
+        const res = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token } });
+        out.textContent += 'Status: ' + res.status + '\n';
+        const text = await res.text();
+        out.textContent += 'Response: ' + text.substring(0, 200) + '\n';
+        if (res.ok) { out.textContent += '✓ THIS PROXY WORKS!'; break; }
+      } catch(e) {
+        out.textContent += 'Error: ' + e.message + '\n';
+      }
+    }
+  }
+
   async function fetchStravaActivities(groqKey) {
     const stravaToken = localStorage.getItem('strava_token');
     if (!stravaToken) return null;
