@@ -536,22 +536,25 @@
     if (!token) { out.textContent += 'NO TOKEN in localStorage!'; return; }
     out.textContent += 'Token found: ' + token.substring(0,10) + '...\n';
 
-    const today = new Date().toISOString().split('T')[0];
-    const proxies = [
-      'https://corsproxy.io/?',
-      'https://api.allorigins.win/raw?url=',
-      'https://corsproxy.io/?url='
-    ];
+    // Show local date vs UTC date
+    const utcDate = new Date().toISOString().split('T')[0];
+    const offset = new Date().getTimezoneOffset();
+    const localDate = new Date(Date.now() - offset * 60000).toISOString().split('T')[0];
+    const yesterday = new Date(Date.now() - offset * 60000 - 86400000).toISOString().split('T')[0];
+    out.textContent += 'UTC date: ' + utcDate + '\n';
+    out.textContent += 'Local date: ' + localDate + '\n';
+    out.textContent += 'Yesterday: ' + yesterday + '\n';
 
-    for (const proxy of proxies) {
+    // Try today and yesterday with working proxy
+    const proxy = 'https://corsproxy.io/?';
+    for (const date of [localDate, yesterday]) {
       try {
-        out.textContent += '\nTrying: ' + proxy + '...\n';
-        const url = proxy + 'https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=' + today + '&end_date=' + today;
+        out.textContent += '\nTrying date: ' + date + '\n';
+        const url = proxy + 'https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=' + date + '&end_date=' + date;
         const res = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token } });
         out.textContent += 'Status: ' + res.status + '\n';
         const text = await res.text();
-        out.textContent += 'Response: ' + text.substring(0, 200) + '\n';
-        if (res.ok) { out.textContent += '✓ THIS PROXY WORKS!'; break; }
+        out.textContent += 'Response: ' + text.substring(0, 300) + '\n';
       } catch(e) {
         out.textContent += 'Error: ' + e.message + '\n';
       }
