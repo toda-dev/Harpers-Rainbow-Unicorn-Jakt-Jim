@@ -565,12 +565,16 @@
 
       // Fetch Oura data
       const [readinessRes, sleepRes, activityRes] = await Promise.all([
-        fetch(`https://api.allorigins.win/raw?url=https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
-        fetch(`https://api.allorigins.win/raw?url=https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
-        fetch(`https://api.allorigins.win/raw?url=https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers: ouraHeaders })
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers: ouraHeaders })
       ]);
 
-      if (!readinessRes.ok) { const e = await readinessRes.json(); throw new Error(`Oura: ${e.message || readinessRes.status}`); }
+      if (!readinessRes.ok) {
+        let errMsg = readinessRes.status;
+        try { const e = await readinessRes.clone().json(); errMsg = e.message || errMsg; } catch {}
+        throw new Error(`Oura API error ${errMsg} — try tapping Start Over and reconnecting Oura`);
+      }
 
       const [readinessData, sleepData, activityData] = await Promise.all([
         readinessRes.json(), sleepRes.json(), activityRes.json()
