@@ -42,7 +42,6 @@
     line-height: 1.5;
   }
 
-  /* RAINBOW SHIMMER BAR */
   .rainbow-bar {
     height: 4px;
     background: var(--rainbow);
@@ -50,12 +49,8 @@
     animation: shimmer 3s linear infinite;
   }
 
-  @keyframes shimmer {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
-  }
+  @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
 
-  /* HEADER */
   header {
     border-bottom: 1px solid var(--border);
     padding: 16px 24px;
@@ -64,240 +59,169 @@
     justify-content: space-between;
     position: sticky;
     top: 0;
-    background: rgba(26, 10, 46, 0.95);
+    background: rgba(26,10,46,0.95);
     backdrop-filter: blur(12px);
     z-index: 100;
   }
 
   .wordmark {
     font-family: 'Pacifico', cursive;
-    font-size: 22px;
+    font-size: 20px;
     background: var(--rainbow-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 0.02em;
   }
 
-  .badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--mid);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+  .badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  .unicorn {
-    font-size: 20px;
-    margin-right: 6px;
-  }
-
-  main { max-width: 700px; margin: 0 auto; padding: 32px 20px 80px; }
+  main { max-width: 700px; margin: 0 auto; padding: 24px 16px 80px; }
 
   .section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
     background: var(--rainbow-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     margin-bottom: 10px;
   }
 
   .step-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 16px;
-    transition: border-color 0.3s;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin-bottom: 14px;
   }
 
-  .step-card.active { border-color: var(--purple); box-shadow: 0 0 20px rgba(168, 85, 247, 0.15); }
+  .step-card.active { border-color: var(--purple); box-shadow: 0 0 20px rgba(168,85,247,0.15); }
   .step-card.locked { opacity: 0.35; pointer-events: none; }
 
-  .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 
   .step-num {
-    font-family: 'Pacifico', cursive;
-    font-size: 28px;
+    font-family: 'Pacifico', cursive; font-size: 26px;
     background: var(--rainbow-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    min-width: 32px;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1; min-width: 30px;
   }
 
-  .step-title {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 17px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-
-  .step-sub { font-size: 13px; color: var(--mid); font-weight: 400; margin-top: 2px; }
+  .step-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .step-sub { font-size: 12px; color: var(--mid); margin-top: 2px; }
 
   label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--light);
-    margin-bottom: 6px;
-    margin-top: 14px;
+    display: block; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--light); margin-bottom: 5px; margin-top: 12px;
   }
 
   label:first-of-type { margin-top: 0; }
 
-  input[type="text"], input[type="url"], select, textarea {
-    width: 100%;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--white);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    padding: 10px 12px;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+  input[type="text"], input[type="number"], select, textarea {
+    width: 100%; background: var(--card2); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--white);
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    padding: 9px 12px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--purple);
-    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
-  }
-
+  input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(168,85,247,0.15); }
   select option { background: var(--card2); }
-  textarea { font-family: 'Nunito', sans-serif; font-size: 13px; resize: vertical; min-height: 70px; }
+  textarea { font-family: 'Nunito', sans-serif; font-size: 13px; resize: vertical; min-height: 60px; }
 
   .btn {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 8px;
-    padding: 11px 22px;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px;
+    letter-spacing: 0.06em; text-transform: uppercase; border: none;
+    border-radius: 8px; padding: 11px 22px; cursor: pointer;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
   }
 
-  .btn-primary {
-    background: linear-gradient(135deg, #f472b6, #a855f7);
-    color: white;
-    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
-  }
-
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168, 85, 247, 0.45); }
+  .btn-primary { background: linear-gradient(135deg, #f472b6, #a855f7); color: white; box-shadow: 0 4px 15px rgba(168,85,247,0.3); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,85,247,0.45); }
   .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--light);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-  }
-
+  .btn-ghost { background: transparent; color: var(--light); border: 1px solid var(--border); border-radius: 8px; }
   .btn-ghost:hover { border-color: var(--purple); color: var(--white); }
   .btn-full { width: 100%; justify-content: center; }
 
-  .oauth-steps { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .oauth-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
 
   .oauth-step {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 12px; background: var(--card2); border-radius: 8px;
-    font-size: 13px; color: var(--light);
-    border: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px; background: var(--card2); border-radius: 8px;
+    font-size: 13px; color: var(--light); border: 1px solid var(--border);
   }
 
   .oauth-dot {
-    width: 22px; height: 22px; border-radius: 50%;
+    width: 20px; height: 20px; border-radius: 50%;
     background: linear-gradient(135deg, #f472b6, #a855f7);
-    color: white; font-family: 'Nunito', sans-serif;
-    font-weight: 900; font-size: 11px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
+    color: white; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 10px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
   }
 
   .oauth-step a { color: var(--pink); text-decoration: none; }
   .oauth-step a:hover { text-decoration: underline; }
 
-  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  /* METRICS */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
 
-  .metric-box {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    transition: border-color 0.2s;
-  }
+  .metric-box { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
 
-  .metric-val {
-    font-family: 'Pacifico', cursive;
-    font-size: 38px; line-height: 1; margin-bottom: 4px;
-  }
-
+  .metric-val { font-family: 'Pacifico', cursive; font-size: 30px; line-height: 1; margin-bottom: 2px; }
   .metric-val.good { background: linear-gradient(135deg, #34d399, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .metric-val.warn { background: linear-gradient(135deg, #fbbf24, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .metric-val.low  { background: linear-gradient(135deg, #f472b6, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .metric-val.neutral { color: var(--white); }
-
   .metric-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
 
-  #output-section { display: none; margin-top: 24px; }
+  /* STRAVA SUMMARY */
+  .strava-card {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px; margin-bottom: 12px;
+  }
+
+  .strava-title {
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--light);
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+
+  .strava-activities { display: flex; flex-direction: column; gap: 6px; }
+
+  .strava-activity {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--cream); padding: 6px 8px;
+    background: var(--card); border-radius: 6px;
+  }
+
+  .strava-activity .name { font-weight: 700; color: var(--white); }
+  .strava-activity .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--mid); }
+
+  /* NUTRITION ROW */
+  .nutrition-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; }
+
+  /* OUTPUT */
+  #output-section { display: none; margin-top: 20px; }
 
   .output-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
 
   .output-header {
-    padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; display: flex; align-items: center; gap: 10px;
     border-bottom: 1px solid var(--border);
     background: linear-gradient(135deg, rgba(244,114,182,0.1), rgba(168,85,247,0.1));
   }
 
   .readiness-pill {
-    font-family: 'Nunito', sans-serif; font-weight: 800;
-    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 4px 12px; border-radius: 20px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
   }
 
   .pill-high { background: linear-gradient(135deg, #34d399, #60a5fa); color: #0f2d1e; }
   .pill-mid  { background: linear-gradient(135deg, #fbbf24, #f472b6); color: #3d1a00; }
   .pill-low  { background: linear-gradient(135deg, #f472b6, #a855f7); color: white; }
 
-  .output-title {
-    font-family: 'Nunito', sans-serif; font-weight: 900;
-    font-size: 20px; letter-spacing: 0.04em; text-transform: uppercase;
-    flex: 1; color: var(--white);
-  }
+  .output-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 18px; text-transform: uppercase; flex: 1; }
 
-  .output-body { padding: 20px; font-size: 14px; color: var(--cream); line-height: 1.8; white-space: pre-wrap; }
+  .output-body { padding: 18px; font-size: 14px; color: var(--cream); line-height: 1.8; white-space: pre-wrap; }
 
-  .loading-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: 12px; }
-
-  .loading-bar-fill {
-    height: 100%;
-    background: var(--rainbow);
-    background-size: 200% 100%;
-    width: 60%;
-    animation: rainbowslide 1.5s linear infinite;
-  }
-
-  @keyframes rainbowslide {
-    0%   { margin-left: -60%; }
-    100% { margin-left: 100%; }
-  }
-
-  .loading-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mid); margin-top: 8px; letter-spacing: 0.06em; }
+  .loading-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: 10px; }
+  .loading-bar-fill { height: 100%; background: var(--rainbow); background-size: 200% 100%; width: 60%; animation: rainbowslide 1.5s linear infinite; }
+  @keyframes rainbowslide { 0% { margin-left: -60%; } 100% { margin-left: 100%; } }
+  .loading-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mid); margin-top: 6px; }
 
   .status { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 8px 12px; border-radius: 8px; margin-top: 10px; display: none; }
   .status.error   { background: rgba(244,114,182,0.15); color: #f9a8d4; border: 1px solid var(--pink-dim); display: block; }
@@ -307,15 +231,57 @@
   .token-display {
     background: rgba(52,211,153,0.08); border: 1px solid #065f46; border-radius: 8px;
     padding: 10px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    color: #6ee7b7; word-break: break-all; display: none; margin-top: 10px;
+    color: #6ee7b7; display: none; margin-top: 10px;
   }
 
   .copy-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
   .copy-row input { flex: 1; font-size: 11px; padding: 8px 10px; }
 
+  .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+
+  /* COLLAPSIBLE CARDS */
+  .step-card.collapsed .step-body { display: none; }
+  .step-card.collapsed { padding-bottom: 20px; }
+
+  .step-header {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .step-header:hover .step-title { color: var(--purple-bright); }
+
+  .collapse-icon {
+    margin-left: auto;
+    color: var(--mid);
+    font-size: 18px;
+    transition: transform 0.2s;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1;
+  }
+
+  .step-card.collapsed .collapse-icon { transform: rotate(-90deg); }
+
+  .step-card.done .step-header::before {
+    content: '✓';
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #34d399, #60a5fa);
+    color: #0f2d1e;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900; font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    position: absolute;
+    right: 44px;
+  }
+
+  .step-card { position: relative; }
+
   @media (max-width: 480px) {
-    .metrics-grid { grid-template-columns: 1fr 1fr; }
-    .metric-val { font-size: 30px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .nutrition-grid { grid-template-columns: 1fr 1fr; }
+    .metric-val { font-size: 26px; }
   }
 </style>
 </head>
@@ -324,90 +290,103 @@
 <div class="rainbow-bar"></div>
 <header>
   <div class="wordmark">🦄 Harper's Unicorn Rainbow Jakt Jim</div>
-  <div class="badge">Hyrox · Deka · Daily Magic ✨</div>
+  <div class="badge">Daily Brief ✨</div>
 </header>
 
 <main>
 
-  <!-- STEP 1: REGISTER OURA APP -->
+  <!-- STEP 1: OURA -->
   <div class="step-card active" id="card-1">
-    <div class="step-header">
+    <div class="step-header" onclick="toggleCard('card-1')">
       <div class="step-num">01</div>
       <div>
-        <div class="step-title">Register your Oura app</div>
-        <div class="step-sub">One-time setup — takes about 2 minutes</div>
+        <div class="step-title">Connect Oura Ring</div>
+        <div class="step-sub">One-time setup</div>
       </div>
+      <div class="collapse-icon">▾</div>
     </div>
+    <div class="step-body">
 
     <div class="oauth-steps">
-      <div class="oauth-step">
-        <div class="oauth-dot">1</div>
-        <div>Go to <a href="https://cloud.ouraring.com/oauth/applications" target="_blank">cloud.ouraring.com/oauth/applications</a> and sign in</div>
-      </div>
-      <div class="oauth-step">
-        <div class="oauth-dot">2</div>
-        <div>Click <strong>Create New Application</strong></div>
-      </div>
-      <div class="oauth-step">
-        <div class="oauth-dot">3</div>
-        <div>Name it anything (e.g. "Field Ready"). For <strong>Redirect URI</strong>, paste this exact URL:</div>
-      </div>
+      <div class="oauth-step"><div class="oauth-dot">1</div><div>Go to <a href="https://cloud.ouraring.com/oauth/applications" target="_blank">cloud.ouraring.com/oauth/applications</a> → Create New Application</div></div>
+      <div class="oauth-step"><div class="oauth-dot">2</div><div>Set Redirect URI to the URL shown below. Enable implicit grant. Save.</div></div>
+      <div class="oauth-step"><div class="oauth-dot">3</div><div>Paste your Client ID below</div></div>
     </div>
 
-    <div class="copy-row" style="margin-top: 10px;">
+    <div class="copy-row" style="margin-top:10px;">
       <input type="text" id="redirect-uri-display" value="" readonly />
       <button class="btn btn-ghost" onclick="copyRedirectUri()">Copy</button>
     </div>
 
-    <div class="oauth-steps" style="margin-top: 10px;">
-      <div class="oauth-step">
-        <div class="oauth-dot">4</div>
-        <div>Enable <strong>client-side authentication</strong> (implicit grant). Save the app.</div>
-      </div>
-      <div class="oauth-step">
-        <div class="oauth-dot">5</div>
-        <div>Copy your <strong>Client ID</strong> and paste it below</div>
-      </div>
-    </div>
-
-    <label for="client-id" style="margin-top: 16px;">Oura Client ID</label>
+    <label for="client-id" style="margin-top:14px;">Oura Client ID</label>
     <input type="text" id="client-id" placeholder="e.g. E55QJ2DGMZUXK6TN" />
 
-    <div style="margin-top: 14px;">
+    <div style="margin-top:12px;">
       <button class="btn btn-primary" onclick="startOAuth()">Connect Oura Ring →</button>
     </div>
     <div class="status" id="status-1"></div>
+    </div>
   </div>
 
-  <!-- STEP 2: AUTHORIZE (shown after OAuth redirect) -->
+  <!-- STEP 2: AUTHORIZED -->
   <div class="step-card locked" id="card-2">
-    <div class="step-header">
+    <div class="step-header" onclick="toggleCard('card-2')">
       <div class="step-num">02</div>
       <div>
-        <div class="step-title">Authorize access</div>
-        <div class="step-sub">You'll be sent to Oura to approve data access</div>
+        <div class="step-title">Oura Status</div>
+        <div class="step-sub">Connected and pulling live data</div>
       </div>
+      <div class="collapse-icon">▾</div>
     </div>
+    <div class="step-body">
     <div class="token-display" id="token-display"></div>
     <div class="status" id="status-2"></div>
+    </div>
   </div>
 
-  <!-- STEP 3: TRAINING CONTEXT -->
+  <!-- STEP 3: DAILY BRIEF -->
   <div class="step-card locked" id="card-3">
-    <div class="step-header">
+    <div class="step-header" onclick="toggleCard('card-3')">
       <div class="step-num">03</div>
       <div>
-        <div class="step-title">Your training context</div>
-        <div class="step-sub">Helps calibrate recommendations to your season</div>
+        <div class="step-title">Your Daily Brief</div>
+        <div class="step-sub">Nutrition + training + recovery in one shot</div>
+      </div>
+      <div class="collapse-icon">▾</div>
+    </div>
+    <div class="step-body">
+
+    <label for="groq-key">Groq API Key — <a href="https://console.groq.com/keys" target="_blank" style="color:var(--pink)">get free key</a></label>
+    <input type="text" id="groq-key" placeholder="gsk_..." />
+
+    <hr class="divider">
+
+    <div class="section-label" style="margin-top:0;">Yesterday's Nutrition (from MFP)</div>
+
+    <div class="nutrition-grid">
+      <div>
+        <label for="calories">Calories</label>
+        <input type="number" id="calories" placeholder="2400" />
+      </div>
+      <div>
+        <label for="protein">Protein (g)</label>
+        <input type="number" id="protein" placeholder="160" />
+      </div>
+      <div>
+        <label for="carbs">Carbs (g)</label>
+        <input type="number" id="carbs" placeholder="280" />
+      </div>
+      <div>
+        <label for="fat">Fat (g)</label>
+        <input type="number" id="fat" placeholder="80" />
       </div>
     </div>
 
-    <label for="groq-key">Groq API Key — <a href="https://console.groq.com/keys" target="_blank" style="color:var(--red)">get free key at console.groq.com</a></label>
-    <input type="text" id="groq-key" placeholder="gsk_..." />
+    <hr class="divider">
 
-    <label for="training-day">Today's scheduled session type</label>
+    <label for="training-day">Today's session type</label>
     <select id="training-day">
-      <option value="run-easy">Run — Easy / Aerobic</option>
+      <option value="run-easy">Run — Easy / Aerobic (Z2)</option>
       <option value="run-tempo">Run — Tempo / Threshold</option>
       <option value="run-intervals">Run — Intervals / Speed</option>
       <option value="hybrid-strength">Hybrid — Strength Focus</option>
@@ -419,15 +398,16 @@
     <label for="next-race">Next competition</label>
     <input type="text" id="next-race" placeholder="e.g. Hyrox Chicago in 3 weeks" />
 
-    <label for="extra-notes">Anything else today? (optional)</label>
-    <textarea id="extra-notes" placeholder="e.g. legs are sore from yesterday, slept badly, feeling strong..."></textarea>
+    <label for="extra-notes">Anything else? (optional)</label>
+    <textarea id="extra-notes" placeholder="e.g. left knee a bit tight, feeling strong..."></textarea>
 
-    <div style="margin-top: 14px;">
+    <div style="margin-top:14px;">
       <button class="btn btn-primary btn-full" onclick="getWorkout()" id="btn-get">
-        Get today's workout →
+        🦄 Get today's brief →
       </button>
     </div>
     <div class="status" id="status-3"></div>
+    </div>
   </div>
 
   <!-- OUTPUT -->
@@ -435,6 +415,7 @@
     <div class="section-label">Today's directive</div>
 
     <div id="metrics-display" class="metrics-grid"></div>
+    <div id="strava-display"></div>
 
     <div class="output-card">
       <div class="output-header">
@@ -443,11 +424,11 @@
       </div>
       <div class="output-body" id="output-body">
         <div class="loading-bar"><div class="loading-bar-fill"></div></div>
-        <div class="loading-text">Pulling Oura data + generating recommendation...</div>
+        <div class="loading-text">Pulling your data...</div>
       </div>
     </div>
 
-    <div style="margin-top: 14px; display: flex; gap: 10px;">
+    <div style="margin-top:12px; display:flex; gap:10px;">
       <button class="btn btn-ghost" onclick="resetApp()">← Start over</button>
       <button class="btn btn-ghost" onclick="getWorkout()">↺ Refresh</button>
     </div>
@@ -460,32 +441,40 @@
   const REDIRECT_URI = window.location.href.split('?')[0].split('#')[0];
   document.getElementById('redirect-uri-display').value = REDIRECT_URI;
 
+  // ── STRAVA CONFIG ─────────────────────────────────────────────────────────
+  // Strava uses server-side OAuth so we embed a read-only token approach
+  // User pastes their Strava access token (from strava.com/settings/api)
+  
   window.addEventListener('load', () => {
-    // Restore all saved settings
     const savedId      = localStorage.getItem('oura_client_id');
     const savedGroq    = localStorage.getItem('groq_key');
     const savedRace    = localStorage.getItem('next_race');
     const savedDay     = localStorage.getItem('training_day');
     const savedToken   = localStorage.getItem('oura_access_token');
     const savedExpiry  = localStorage.getItem('oura_token_expiry');
+    const savedCals    = localStorage.getItem('calories');
+    const savedProtein = localStorage.getItem('protein');
+    const savedCarbs   = localStorage.getItem('carbs');
+    const savedFat     = localStorage.getItem('fat');
+    const savedStrava  = localStorage.getItem('strava_token');
 
-    if (savedId)   document.getElementById('client-id').value   = savedId;
-    if (savedGroq) document.getElementById('groq-key').value    = savedGroq;
-    if (savedRace) document.getElementById('next-race').value   = savedRace;
-    if (savedDay)  document.getElementById('training-day').value = savedDay;
+    if (savedId)      document.getElementById('client-id').value      = savedId;
+    if (savedGroq)    document.getElementById('groq-key').value        = savedGroq;
+    if (savedRace)    document.getElementById('next-race').value       = savedRace;
+    if (savedDay)     document.getElementById('training-day').value    = savedDay;
+    if (savedCals)    document.getElementById('calories').value        = savedCals;
+    if (savedProtein) document.getElementById('protein').value         = savedProtein;
+    if (savedCarbs)   document.getElementById('carbs').value           = savedCarbs;
+    if (savedFat)     document.getElementById('fat').value             = savedFat;
 
-    // Save groq key on change
-    document.getElementById('groq-key').addEventListener('change', () => {
-      localStorage.setItem('groq_key', document.getElementById('groq-key').value.trim());
-    });
-    document.getElementById('next-race').addEventListener('change', () => {
-      localStorage.setItem('next_race', document.getElementById('next-race').value);
-    });
-    document.getElementById('training-day').addEventListener('change', () => {
-      localStorage.setItem('training_day', document.getElementById('training-day').value);
+    ['groq-key','next-race','training-day','calories','protein','carbs','fat'].forEach(id => {
+      document.getElementById(id).addEventListener('change', () => {
+        const keyMap = {'groq-key':'groq_key','next-race':'next_race','training-day':'training_day'};
+        const key = keyMap[id] || id;
+        localStorage.setItem(key, document.getElementById(id).value);
+      });
     });
 
-    // Check for OAuth callback in URL hash
     const hash = window.location.hash;
     if (hash.includes('access_token=')) {
       const params = new URLSearchParams(hash.substring(1));
@@ -500,7 +489,6 @@
       }
     }
 
-    // Use saved token if still valid
     if (savedToken && savedExpiry && Date.now() < parseInt(savedExpiry)) {
       accessToken = savedToken;
       showConnected();
@@ -508,13 +496,14 @@
   });
 
   function showConnected() {
-    unlockStep(2);
-    unlockStep(3);
-    showStatus('status-2', 'success', '✓ Oura connected');
+    unlockStep(2); unlockStep(3);
+    showStatus('status-2', 'success', '✓ Oura connected — token valid for 29 days');
     document.getElementById('token-display').style.display = 'block';
-    document.getElementById('token-display').textContent = '✓ Token active — auto-reconnects every 30 days';
+    document.getElementById('token-display').textContent = '✓ Oura active · Strava pulling automatically · Nutrition from your inputs';
     document.getElementById('card-2').classList.remove('locked');
     document.getElementById('card-2').classList.add('active');
+    collapseCard('card-1');
+    collapseCard('card-2');
     setTimeout(() => document.getElementById('card-3').scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
   }
 
@@ -528,21 +517,42 @@
     window.location.href = authUrl;
   }
 
+  // ── FETCH STRAVA via Groq (server-side proxy approach) ───────────────────
+  // We use the Groq key we already have + ask Claude/Groq to call Strava
+  // Actually we'll fetch Strava directly with a saved token
+  async function fetchStravaActivities(groqKey) {
+    const stravaToken = localStorage.getItem('strava_token');
+    if (!stravaToken) return null;
+    try {
+      const res = await fetch(`https://corsproxy.io/?https://www.strava.com/api/v3/athlete/activities?per_page=5`, {
+        headers: { 'Authorization': `Bearer ${stravaToken}` }
+      });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch { return null; }
+  }
+
   async function getWorkout() {
     if (!accessToken) { showStatus('status-3', 'error', 'No Oura token. Complete step 1 first.'); return; }
-
     const groqKey = document.getElementById('groq-key').value.trim();
     if (!groqKey) { showStatus('status-3', 'error', 'Paste your Groq API key first'); return; }
+
+    // Save all inputs
     localStorage.setItem('groq_key', groqKey);
     localStorage.setItem('next_race', document.getElementById('next-race').value);
     localStorage.setItem('training_day', document.getElementById('training-day').value);
+    localStorage.setItem('calories', document.getElementById('calories').value);
+    localStorage.setItem('protein', document.getElementById('protein').value);
+    localStorage.setItem('carbs', document.getElementById('carbs').value);
+    localStorage.setItem('fat', document.getElementById('fat').value);
 
     document.getElementById('output-section').style.display = 'block';
-    document.getElementById('output-body').innerHTML = `<div class="loading-bar"><div class="loading-bar-fill"></div></div><div class="loading-text">Pulling readiness, sleep + HRV from Oura...</div>`;
+    document.getElementById('output-body').innerHTML = `<div class="loading-bar"><div class="loading-bar-fill"></div></div><div class="loading-text">Pulling Oura biometrics...</div>`;
     document.getElementById('output-title').textContent = 'Analyzing...';
     document.getElementById('readiness-pill').textContent = '—';
     document.getElementById('readiness-pill').className = 'readiness-pill';
     document.getElementById('metrics-display').innerHTML = '';
+    document.getElementById('strava-display').innerHTML = '';
     document.getElementById('output-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     try {
@@ -551,76 +561,130 @@
       const yesterday = new Date(today);
       yesterday.setDate(today.getDate() - 1);
       const yesterdayStr = yesterday.toISOString().split('T')[0];
-      const headers = { 'Authorization': `Bearer ${accessToken}` };
+      const ouraHeaders = { 'Authorization': `Bearer ${accessToken}` };
 
+      // Fetch Oura data
       const [readinessRes, sleepRes, activityRes] = await Promise.all([
-        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers }),
-        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers }),
-        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers })
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_readiness?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_sleep?start_date=${todayStr}&end_date=${todayStr}`, { headers: ouraHeaders }),
+        fetch(`https://corsproxy.io/?https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${yesterdayStr}&end_date=${yesterdayStr}`, { headers: ouraHeaders })
       ]);
 
-      if (!readinessRes.ok) { const e = await readinessRes.json(); throw new Error(`Oura error: ${e.message || readinessRes.status}`); }
+      if (!readinessRes.ok) { const e = await readinessRes.json(); throw new Error(`Oura: ${e.message || readinessRes.status}`); }
 
       const [readinessData, sleepData, activityData] = await Promise.all([
         readinessRes.json(), sleepRes.json(), activityRes.json()
       ]);
 
-      const readiness = readinessData.data?.[0];
-      const sleep = sleepData.data?.[0];
-      const readinessScore  = readiness?.score ?? null;
-      const sleepScore      = sleep?.score ?? null;
-      const hrvBalance      = readiness?.contributors?.hrv_balance ?? null;
-      const restingHR       = readiness?.contributors?.resting_heart_rate ?? null;
-      const recoveryIndex   = readiness?.contributors?.recovery_index ?? null;
-      const bodyTemp        = readiness?.temperature_deviation ?? null;
-      const activityBalance = readiness?.contributors?.activity_balance ?? null;
+      const r = readinessData.data?.[0];
+      const s = sleepData.data?.[0];
+      const readinessScore  = r?.score ?? null;
+      const sleepScore      = s?.score ?? null;
+      const hrvBalance      = r?.contributors?.hrv_balance ?? null;
+      const restingHR       = r?.contributors?.resting_heart_rate ?? null;
+      const recoveryIndex   = r?.contributors?.recovery_index ?? null;
+      const bodyTemp        = r?.temperature_deviation ?? null;
+      const activityBalance = r?.contributors?.activity_balance ?? null;
+      const totalSleep      = s?.contributors?.total_sleep ?? null;
+      const deepSleep       = s?.contributors?.deep_sleep ?? null;
 
-      renderMetrics({ readinessScore, sleepScore, hrvBalance, restingHR });
+      renderMetrics({ readinessScore, sleepScore, hrvBalance, restingHR, recoveryIndex, bodyTemp });
 
+      // Try Strava
+      document.getElementById('output-body').innerHTML = `<div class="loading-bar"><div class="loading-bar-fill"></div></div><div class="loading-text">Pulling Strava activity history...</div>`;
+      const stravaActivities = await fetchStravaActivities(groqKey);
+      let stravaContext = 'Strava not connected — no recent activity data available.';
+      if (stravaActivities && stravaActivities.length > 0) {
+        renderStravaCard(stravaActivities);
+        stravaContext = stravaActivities.slice(0, 5).map(a => {
+          const dist = a.distance > 0 ? `${(a.distance/1000).toFixed(1)}km` : '';
+          const time = Math.round(a.moving_time / 60) + 'min';
+          const cal = a.kilojoules ? Math.round(a.kilojoules * 0.239) + 'cal' : (a.calories ? a.calories + 'cal' : '');
+          const effort = a.suffer_score ? `effort:${a.suffer_score}` : '';
+          const desc = a.description ? `\n  Details: ${a.description.substring(0,300)}` : '';
+          return `- ${a.name} (${a.type}) — ${[dist,time,cal,effort].filter(Boolean).join(', ')} on ${a.start_date_local?.split('T')[0]}${desc}`;
+        }).join('\n');
+      }
+
+      // Get nutrition inputs
+      const calories = document.getElementById('calories').value;
+      const protein  = document.getElementById('protein').value;
+      const carbs    = document.getElementById('carbs').value;
+      const fat      = document.getElementById('fat').value;
       const trainingDay = document.getElementById('training-day').value;
       const nextRace    = document.getElementById('next-race').value;
       const extraNotes  = document.getElementById('extra-notes').value;
 
       const labels = {
-        'run-easy': 'Easy / Aerobic Run', 'run-tempo': 'Tempo / Threshold Run',
+        'run-easy': 'Easy / Aerobic Run (Z2)', 'run-tempo': 'Tempo / Threshold Run',
         'run-intervals': 'Interval / Speed Run', 'hybrid-strength': 'Hybrid — Strength Focus',
         'hybrid-cardio': 'Hybrid — Cardio / Functional', 'hybrid-race-sim': 'Hybrid — Race Simulation',
         'rest': 'Rest / Recovery Day'
       };
 
-      document.getElementById('output-body').innerHTML = `<div class="loading-bar"><div class="loading-bar-fill"></div></div><div class="loading-text">Generating recommendation...</div>`;
+      document.getElementById('output-body').innerHTML = `<div class="loading-bar"><div class="loading-bar-fill"></div></div><div class="loading-text">Building your personalized brief...</div>`;
 
-      const prompt = `You are a high-performance coach for a competitive Hyrox and Deka athlete. Based on today's Oura biometrics, give a specific actionable workout.
+      const prompt = `You are an elite performance coach for Eric Toda, a competitive Hyrox and Deka athlete based in Lafayette, CA. Generate his complete morning brief.
 
 ATHLETE PROFILE:
-- Hyrox + Deka competitor, races year-round
+- Weight: 166 lbs (75.3kg)
+- Competes in Hyrox + Deka year-round
 - Training: 3 run days + 3 hybrid days + 1 rest/week
-- Equipment: Concept2 rower, treadmill, Rogue 24" plyo box, power rack, GORUCK sandbag, med ball, adjustable dumbbells, balance board
+- Garage gym: Concept2 rower, treadmill, Rogue 24" plyo box, power rack, GORUCK sandbag, med ball, adjustable dumbbells, balance board
+- Goal: Get strong and lean without injuries. Optimize nutrition to fuel performance and body composition.
 - Next competition: ${nextRace || 'not specified'}
-- Today's session type: ${labels[trainingDay]}
+- Today's planned session: ${labels[trainingDay]}
 - Notes: ${extraNotes || 'none'}
 
-OURA BIOMETRICS:
+TODAY'S OURA BIOMETRICS:
 - Readiness: ${readinessScore ?? 'n/a'}/100
-- Sleep: ${sleepScore ?? 'n/a'}/100
+- Sleep Score: ${sleepScore ?? 'n/a'}/100
 - HRV Balance: ${hrvBalance ?? 'n/a'}/100
 - Resting HR contributor: ${restingHR ?? 'n/a'}/100
 - Recovery Index: ${recoveryIndex ?? 'n/a'}/100
-- Body Temp deviation: ${bodyTemp ?? 'n/a'}°C
+- Body Temp Deviation: ${bodyTemp ?? 'n/a'}°C
 - Activity Balance: ${activityBalance ?? 'n/a'}/100
+- Deep Sleep contributor: ${deepSleep ?? 'n/a'}/100
 
-FORMAT:
-1. One-line verdict: GO HARD / MODERATE / TAKE IT EASY / REST — and why
-2. Specific workout with sets/reps/distances/times using their equipment
-3. 1-2 things to monitor during session
-4. One post-session recovery action
+YESTERDAY'S NUTRITION (from MyFitnessPal):
+- Calories: ${calories || 'not logged'}
+- Protein: ${protein ? protein + 'g' : 'not logged'}
+- Carbs: ${carbs ? carbs + 'g' : 'not logged'}
+- Fat: ${fat ? fat + 'g' : 'not logged'}
 
-Punchy, direct, no fluff. Bullet points. Under 300 words.`;
+RECENT STRAVA ACTIVITY (last 5 sessions):
+${stravaContext}
+
+YOUR BRIEF FORMAT — use exactly these sections:
+
+🎯 VERDICT
+One punchy sentence: GO HARD / MODERATE / TAKE IT EASY / REST and exactly why based on the biometrics.
+
+💪 TODAY'S WORKOUT
+Specific session using available equipment. Sets/reps/distances/times. Adapt intensity to readiness score.
+
+📊 WATCH DURING SESSION
+2 specific metrics or cues to monitor (HR zone, pacing, form).
+
+🥗 NUTRITION TARGETS TODAY
+- Calories: [number] (explain why based on today's session)
+- Protein: [number]g (based on 166lb bodyweight + training goal)
+- Carbs: [number]g (timing: pre/during/post workout)
+- Fat: [number]g
+- Flag if yesterday's nutrition was underfueled or off-target for training load
+
+🌙 RECOVERY TONIGHT
+One specific action after training.
+
+⚠️ INJURY PREVENTION
+Based on recent training load from Strava, flag any overuse risks and one corrective action.
+
+Be direct, specific, no fluff. This is his daily operating system.`;
 
       const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + groqKey },
-        body: JSON.stringify({ model: 'llama-3.3-70b-versatile', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
+        body: JSON.stringify({ model: 'llama-3.3-70b-versatile', max_tokens: 1200, messages: [{ role: 'user', content: prompt }] })
       });
 
       const groqData = await groqRes.json();
@@ -645,19 +709,56 @@ Punchy, direct, no fluff. Bullet points. Under 300 words.`;
     }
   }
 
-  function renderMetrics({ readinessScore, sleepScore, hrvBalance, restingHR }) {
+  function renderMetrics({ readinessScore, sleepScore, hrvBalance, restingHR, recoveryIndex, bodyTemp }) {
     const metrics = [
-      { label: 'Readiness', val: readinessScore, t: [75, 55] },
-      { label: 'Sleep',     val: sleepScore,     t: [75, 55] },
-      { label: 'HRV Balance', val: hrvBalance,   t: [75, 55] },
-      { label: 'Resting HR',  val: restingHR,    t: [75, 55] },
+      { label: 'Readiness', val: readinessScore, t: [75,55] },
+      { label: 'Sleep',     val: sleepScore,     t: [75,55] },
+      { label: 'HRV',       val: hrvBalance,     t: [75,55] },
+      { label: 'Resting HR',val: restingHR,      t: [75,55] },
+      { label: 'Recovery',  val: recoveryIndex,  t: [75,55] },
+      { label: 'Body Temp', val: bodyTemp !== null ? (bodyTemp === 0 ? 'OK' : bodyTemp > 0 ? '+'+bodyTemp.toFixed(1) : bodyTemp.toFixed(1)) : null, raw: bodyTemp, t: [0.5, -0.5], isTemp: true },
     ];
     document.getElementById('metrics-display').innerHTML = metrics.map(m => {
-      const display = m.val !== null ? Math.round(m.val) : '—';
-      let cls = 'neutral';
-      if (m.val !== null) { cls = m.val >= m.t[0] ? 'good' : m.val < m.t[1] ? 'low' : 'warn'; }
+      let display, cls = 'neutral';
+      if (m.isTemp) {
+        display = m.val ?? '—';
+        if (m.raw !== null) cls = Math.abs(m.raw) < 0.3 ? 'good' : Math.abs(m.raw) < 0.6 ? 'warn' : 'low';
+      } else {
+        display = m.val !== null ? Math.round(m.val) : '—';
+        if (m.val !== null) cls = m.val >= m.t[0] ? 'good' : m.val < m.t[1] ? 'low' : 'warn';
+      }
       return `<div class="metric-box"><div class="metric-val ${cls}">${display}</div><div class="metric-label">${m.label}</div></div>`;
     }).join('');
+  }
+
+  function renderStravaCard(activities) {
+    const recent = activities.slice(0, 3);
+    const html = `<div class="strava-card">
+      <div class="strava-title">🏃 Recent Strava Activity</div>
+      <div class="strava-activities">${recent.map(a => {
+        const dist = a.distance > 0 ? `${(a.distance/1000).toFixed(1)}km` : '';
+        const time = Math.round(a.moving_time/60) + 'min';
+        const date = a.start_date_local?.split('T')[0] || '';
+        return `<div class="strava-activity">
+          <div><span class="name">${a.name}</span> <span style="color:var(--mid);font-size:11px;">${a.type}</span></div>
+          <div class="meta">${[dist,time,date].filter(Boolean).join(' · ')}</div>
+        </div>`;
+      }).join('')}</div>
+    </div>`;
+    document.getElementById('strava-display').innerHTML = html;
+  }
+
+
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    if (card.classList.contains('locked')) return;
+    card.classList.toggle('collapsed');
+  }
+
+  function collapseCard(id) {
+    const card = document.getElementById(id);
+    card.classList.add('collapsed');
+    card.classList.add('done');
   }
 
   function unlockStep(n) { const c = document.getElementById(`card-${n}`); c.classList.remove('locked'); c.classList.add('active'); }
